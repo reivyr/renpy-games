@@ -1,58 +1,5 @@
---- screens.rpy.orig	Fri Jun 19 02:58:30 2020
-+++ screens.rpy	Fri Jun 19 02:59:15 2020
-@@ -358,12 +358,12 @@
- 
- 
- 
--screen main_menu tag menu:
-+screen main_menu:
- 
- 
-+    tag menu
- 
- 
--
-     window:
-         style 'mm_root'
- 
-@@ -583,19 +583,19 @@
- 
-                         key 'save_delete' action FileDelete(i)
- 
--screen save tag menu:
-+screen save:
- 
-+    tag menu
- 
--
-     add 'bareprefbg'
-     use navigation_plaque
-     use file_picker
-     text 'Save Game' xalign 0.5 ypos 63 yanchor 0.5 size 44
- 
--screen load tag menu:
-+screen load:
- 
-+    tag menu
- 
--
-     add 'bareprefbg'
-     use navigation_plaque
-     use file_picker
-@@ -621,9 +621,9 @@
- 
- 
- 
--screen preferences tag menu:
-+screen preferences:
- 
--
-+    tag menu 
- 
-     add 'prefs_bg_notext'
-     add translated_file_name('ui/prefs-text.png'):
---- checklist.rpy.orig	Fri Jun 19 02:58:39 2020
-+++ checklist.rpy	Fri Jun 19 02:59:15 2020
+--- checklist.rpy.orig	Fri Jun 19 06:14:13 2020
++++ checklist.rpy	Fri Jun 19 06:14:13 2020
 @@ -136,8 +136,8 @@
      else:
          use achievementbutton_locked(txt=txt)
@@ -150,8 +97,74 @@
      use epilogues_page(base=0)
  
  transform epilist_fadeonhide:
---- translation.rpy.orig	Fri Jun 19 02:58:58 2020
-+++ translation.rpy	Fri Jun 19 02:59:15 2020
+--- screens.rpy.orig	Fri Jun 19 06:14:13 2020
++++ screens.rpy	Fri Jun 19 15:03:20 2020
+@@ -358,12 +358,12 @@
+ 
+ 
+ 
+-screen main_menu tag menu:
++screen main_menu:
+ 
+ 
++    tag menu
+ 
+ 
+-
+     window:
+         style 'mm_root'
+ 
+@@ -397,9 +397,9 @@
+             style style.titlebutt
+             idle translated_file_name('ui/checklist.png')
+             hover translated_file_name('ui/checklist_hover.png')
+-            action (switchfade_shanjia, ShowMenu('checklist'), lambda : renpy.display.focus.set_focused(None, None))
+-        key 'c' action (switchfade_shanjia, ShowMenu('checklist'), lambda : renpy.display.focus.set_focused(None, None))
+-        key 'C' action (switchfade_shanjia, ShowMenu('checklist'), lambda : renpy.display.focus.set_focused(None, None))
++            action (switchfade_shanjia, ShowMenu('checklist'), lambda : renpy.display.focus.set_focused(None, None, None))
++        key 'c' action (switchfade_shanjia, ShowMenu('checklist'), lambda : renpy.display.focus.set_focused(None, None, None))
++        key 'C' action (switchfade_shanjia, ShowMenu('checklist'), lambda : renpy.display.focus.set_focused(None, None, None))
+         if persistent.checklist_crowned:
+             null height 6
+             imagebutton:
+@@ -583,19 +583,19 @@
+ 
+                         key 'save_delete' action FileDelete(i)
+ 
+-screen save tag menu:
++screen save:
+ 
++    tag menu
+ 
+-
+     add 'bareprefbg'
+     use navigation_plaque
+     use file_picker
+     text 'Save Game' xalign 0.5 ypos 63 yanchor 0.5 size 44
+ 
+-screen load tag menu:
++screen load:
+ 
++    tag menu
+ 
+-
+     add 'bareprefbg'
+     use navigation_plaque
+     use file_picker
+@@ -621,9 +621,9 @@
+ 
+ 
+ 
+-screen preferences tag menu:
++screen preferences:
+ 
+-
++    tag menu 
+ 
+     add 'prefs_bg_notext'
+     add translated_file_name('ui/prefs-text.png'):
+--- translation.rpy.orig	Fri Jun 19 06:14:13 2020
++++ translation.rpy	Fri Jun 19 06:14:13 2020
 @@ -1,5 +1,5 @@
 -screen language_select tag menu:
 -
