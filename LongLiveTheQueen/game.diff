@@ -1,0 +1,171 @@
+--- screens.rpy.orig	Fri Jun 19 02:58:30 2020
++++ screens.rpy	Fri Jun 19 02:59:15 2020
+@@ -358,12 +358,12 @@
+ 
+ 
+ 
+-screen main_menu tag menu:
++screen main_menu:
+ 
+ 
++    tag menu
+ 
+ 
+-
+     window:
+         style 'mm_root'
+ 
+@@ -583,19 +583,19 @@
+ 
+                         key 'save_delete' action FileDelete(i)
+ 
+-screen save tag menu:
++screen save:
+ 
++    tag menu
+ 
+-
+     add 'bareprefbg'
+     use navigation_plaque
+     use file_picker
+     text 'Save Game' xalign 0.5 ypos 63 yanchor 0.5 size 44
+ 
+-screen load tag menu:
++screen load:
+ 
++    tag menu
+ 
+-
+     add 'bareprefbg'
+     use navigation_plaque
+     use file_picker
+@@ -621,9 +621,9 @@
+ 
+ 
+ 
+-screen preferences tag menu:
++screen preferences:
+ 
+-
++    tag menu 
+ 
+     add 'prefs_bg_notext'
+     add translated_file_name('ui/prefs-text.png'):
+--- checklist.rpy.orig	Fri Jun 19 02:58:39 2020
++++ checklist.rpy	Fri Jun 19 02:59:15 2020
+@@ -136,8 +136,8 @@
+     else:
+         use achievementbutton_locked(txt=txt)
+ 
+-screen achievements_page1 tag menu:
+-
++screen achievements_page1:
++    tag menu
+     add 'checklist_bg'
+     vbox pos (119, 77) anchor (0, 0) spacing 6:
+         use achievementbutton(icon='coronation', txt='been crowned\nQueen?', var='crowned')
+@@ -155,8 +155,8 @@
+     textbutton _('Checklist') pos (0.5, 590) anchor (0.5, 1.0) action ShowMenu('checklist')
+     textbutton _('Next') pos (1014, 590) anchor (1.0, 1.0) action ShowMenu('achievements_page2')
+ 
+-screen achievements_page2 tag menu:
+-
++screen achievements_page2:
++    tag menu
+     add 'checklist_bg'
+     vbox pos (119, 77) anchor (0, 0) spacing 6:
+         use achievementbutton(icon='secrets', txt='discovered a terrible\nfamily secret?', var='family_secret')
+@@ -174,8 +174,8 @@
+     textbutton _('Checklist') pos (0.5, 590) anchor (0.5, 1.0) action ShowMenu('checklist')
+     textbutton _('Next') pos (1014, 590) anchor (1.0, 1.0) action ShowMenu('achievements_page3')
+ 
+-screen achievements_page3 tag menu:
+-
++screen achievements_page3:
++    tag menu
+     add 'checklist_bg'
+     vbox pos (119, 77) anchor (0, 0) spacing 6:
+         use achievementbutton(icon='magic', txt='hired a Lumen\nMinister?', var='lumen_minister')
+@@ -194,8 +194,8 @@
+     textbutton _('Checklist') pos (0.5, 590) anchor (0.5, 1.0) action ShowMenu('checklist')
+     textbutton _('Next') pos (1014, 590) anchor (1.0, 1.0) action ShowMenu('achievements_page4')
+ 
+-screen achievements_page4 tag menu:
+-
++screen achievements_page4:
++    tag menu
+     add 'checklist_bg'
+     vbox pos (119, 77) anchor (0, 0) spacing 6:
+         use achievementbutton(icon='cats', txt='been blessed by\nthe favor of cats?', var='blessed_by_cats')
+@@ -213,8 +213,8 @@
+     textbutton _('Checklist') pos (0.5, 590) anchor (0.5, 1.0) action ShowMenu('checklist')
+     textbutton _('Next') pos (1014, 590) anchor (1.0, 1.0) action ShowMenu('achievements_page5')
+ 
+-screen achievements_page5 tag menu:
+-
++screen achievements_page5:
++    tag menu
+     add 'checklist_bg'
+     vbox pos (119, 77) anchor (0, 0) spacing 6:
+         use achievementbutton(icon='romance', txt=u'kissed your fianc\xe9?', var='kissed_fiance')
+@@ -226,8 +226,8 @@
+     textbutton _('Checklist') pos (0.5, 590) anchor (0.5, 1.0) action ShowMenu('checklist')
+     textbutton _('Next') pos (1014, 590) anchor (1.0, 1.0) action ShowMenu('achievements_page1')
+ 
+-screen checklist tag menu:
+-
++screen checklist:
++    tag menu
+     add 'ynpromptbg'
+ 
+     vbox xpos 528 xanchor 0.5 ypos 457 yanchor 0.5 spacing 20:
+@@ -304,8 +304,8 @@
+             text _('?') color '#000' pos (40, 40) anchor (0.5, 0.5)
+             text (_('%s?') % _(death_texts.get(val, val))) color '#000' yalign 0.5 xpos 90 xmaximum 166
+ 
+-screen deaths tag menu:
+-
++screen deaths:
++    tag menu
+     add 'checklist_bg'
+     text _('Have you...') xpos 132 ypos 82 size 30 bold 1 color '#000'
+     vbox xpos 116 ypos 124 spacing 8:
+@@ -325,7 +325,7 @@
+                 textbutton _('Checklist') xalign 0.5 action ShowMenu('checklist')
+                 textbutton _('Return') xalign 0.5 action (switchfade_god_save_the_queen, Return())
+     key 'K_ESCAPE' action (switchfade_god_save_the_queen, Return())
+-    $ renpy.display.focus.set_focused(None, None)
++    $ renpy.display.focus.set_focused(None, None, None)
+ 
+ init python:
+     current_epilogue_window = None
+@@ -480,8 +480,8 @@
+         textbutton _('Checklist') action ShowMenu('checklist')
+         textbutton _('Next') action (sets_epilogue_base(current_epilogue_base < 16 and current_epilogue_base + 8 or 0), Jump('epilogues'))
+ 
+-screen epilogues tag menu:
+-
++screen epilogues:
++    tag menu
+     use epilogues_page(base=0)
+ 
+ transform epilist_fadeonhide:
+--- translation.rpy.orig	Fri Jun 19 02:58:58 2020
++++ translation.rpy	Fri Jun 19 02:59:15 2020
+@@ -1,5 +1,5 @@
+-screen language_select tag menu:
+-
++screen language_select:
++    tag menu
+     add 'video_prefs_bg'
+     vbox:
+         pos (40, 40)
+@@ -197,7 +197,7 @@
+         except:
+             return s
+ 
+-    renpy.display.text.text_tags['tag'] = False
++    # renpy.display.text.text_tags['tag'] = False
+ 
+ label set_language_failed:
+     menu:
